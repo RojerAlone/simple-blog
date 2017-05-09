@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.alone.mapper.KindMapper">
+    <resultMap id="Kind" type="cn.alone.pojo.Kind">
+        <id column="kid" jdbcType="INTEGER" property="kid" />
+        <result column="name" jdbcType="VARCHAR" property="name" />
+        <result column="level" jdbcType="TINYINT" property="level" />
+        <result column="ctime" jdbcType="TIMESTAMP" property="ctime" />
+        <result column="utime" jdbcType="TIMESTAMP" property="utime"/>
+    </resultMap>
+
+    <sql id="all_col">
+        kid, name, level, ctime, utime
+    </sql>
+
+    <insert id="insert" parameterType="cn.alone.pojo.Kind" useGeneratedKeys="true" keyProperty="kid">
+        insert into `kind`
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="name != null" >
+                name,
+            </if>
+            <if test="level != null">
+                level,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="name != null" >
+                #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="level != null">
+                #{level,jdbcType=TINYINT},
+            </if>
+        </trim>
+    </insert>
+
+    <delete id="deleteById" parameterType="java.lang.Integer">
+        delete from `kind` where kid = #{kid,jdbcType=INTEGER}
+    </delete>
+
+    <select id="selectById" resultMap="Kind" parameterType="java.lang.Integer">
+        select
+        <include refid="all_col" />
+        from `kind`
+        where kid = #{kid}
+    </select>
+    <select id="selectAll" resultMap="Kind">
+        select
+        <include refid="all_col" />
+        from `kind`
+    </select>
+    <select id="selectByName" resultType="java.lang.Integer" parameterType="java.lang.String">
+        select
+        count(*)
+        from `kind`
+        where name=#{name}
+    </select>
+
+    <update id="update" parameterType="cn.alone.pojo.Blog">
+        update `kind`
+        <set>
+            <if test="name != null" >
+                name = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="level != null">
+                level = #{level,jdbcType=TINYINT},
+            </if>
+        </set>
+        where kid = #{kid,jdbcType=INTEGER}
+    </update>
+
+</mapper>
