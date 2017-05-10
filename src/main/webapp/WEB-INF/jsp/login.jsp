@@ -7,29 +7,27 @@
 <%@ include file="common/taglib.jsp" %>
 <html>
 <head>
+    <jsp:include page="common/head.jsp" />
     <title>用户登录</title>
+    <link href="/css/signin.css" rel="stylesheet">
 </head>
 <body>
-    <c:if test="${info != null}">
-        <h1>${info}</h1>
-    </c:if>
-    <form action="/user/login" method="post">
-        <table width="300" align="center" border="1">
-            <tr>
-                <td>用户名：</td>
-                <td><input type="text" name="username"  /></td>
-            </tr>
-            <tr>
-                <td>密码：</td>
-                <td><input type="password" name="password" /></td>
-            </tr>
-            <tr align="center">
-                <td></td>
-                <td>
-                    <input type="submit" value="登录" />
-                </td>
-            </tr>
-        </table>
-    </form>
+    <jsp:include page="common/top.jsp" />
+    <div class="container">
+        <form class="form-signin" action="/user/login" method="post">
+            <h2 class="form-signin-heading">登录</h2>
+            <label for="inputEmail" class="sr-only">用户名</label>
+            <input type="text" id="inputEmail" class="form-control" placeholder="用户名" required autofocus>
+            <label for="inputPassword" class="sr-only">密码</label>
+            <input type="password" id="inputPassword" class="form-control" placeholder="密码" required>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" value="remember-me"> Remember me
+                </label>
+            </div>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">登录</button>
+        </form>
+    </div>
+    <jsp:include page="common/bottom.jsp" />
 </body>
 </html>

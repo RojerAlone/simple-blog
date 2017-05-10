@@ -4,17 +4,32 @@
   Time: 21:29
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<footer class="blog-footer">
-    <div class="container">
-        <div class="center-block">
-            <p>Copyright © 2017 RojerAlone</p>
+<%--<footer class="footer" text-align="center">--%>
+    <%--<div class="container">--%>
+        <%--<div class="row">--%>
+            <%--<div class="col-lg-6"></div>--%>
+            <%--<div class="col-lg-6">--%>
+                <%--<p>Copyright © 2017 RojerAlone</p>--%>
+            <%--</div>--%>
+        <%--</div>--%>
+    <%--</div>--%>
+<%--</footer>--%>
+<div id="footer">
+    <%--<div class="navbar navbar-fixed-bottom">--%>
+        <div class="container">
+            <p class="text-center muted-credit">Copyright © 2017 RojerAlone</p>
         </div>
-    </div>
-    <div class="scroll-bar pull-right">
-        <%--http://www.w3cdream.com/content-sort-7-article-206.html  返回顶部插件--%>
-        <a id="scrollUp" href="#top" class="back-to-top"></a>
-    </div>
-</footer>
+    <%--</div>--%>
+</div>
+<%--<footer class="footer" style="margin-bottom: 30px;">--%>
+    <%--<div class="container">--%>
+        <%--<p class="text-center">Copyright © 2017 RojerAlone</p>--%>
+    <%--</div>--%>
+<%--</footer>--%>
+<div class="scroll-bar pull-right">
+    <%--http://www.w3cdream.com/content-sort-7-article-206.html  返回顶部插件--%>
+    <a id="scrollUp" href="#top" class="back-to-top"></a>
+</div>
 <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
 <script src="https://cdn.bootcss.com/jquery/3.2.0/jquery.min.js"></script>
 <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
@@ -29,5 +44,9 @@
         } else {
             $("#scrollUp").show();
         }
-    })
+    });
+
+    $('body').css({
+        "overflow-x":"hidden"
+    });
 </script>
