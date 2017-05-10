@@ -1,14 +1,20 @@
 package cn.alone.services.impl;
 
 import cn.alone.mapper.BlogMapper;
+import cn.alone.mapper.KindMapper;
+import cn.alone.mapper.UserMapper;
 import cn.alone.pojo.Blog;
+import cn.alone.pojo.dto.BlogDTO;
 import cn.alone.services.IBlogService;
 import cn.alone.utils.PageUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by RojerAlone on 2017/4/9.
@@ -18,6 +24,10 @@ public class BlogServiceImpl implements IBlogService {
 
     @Autowired
     private BlogMapper blogMapper;
+    @Autowired
+    private UserMapper userMapper;
+    @Autowired
+    private KindMapper kindMapper;
 
     public int write(Blog blog) {
         return blogMapper.insert(blog);
@@ -67,8 +77,23 @@ public class BlogServiceImpl implements IBlogService {
         return blogMapper.selectBlogsByKind(kind, page.getStartPos(), page.getSize());
     }
 
-    public List<Blog> getHotBlogs() {
-        return blogMapper.selectByClicked();
+    @Transactional
+    public Map<String, List<BlogDTO>> getIndexBlogs() {
+        Map<String, List<BlogDTO>> res = new HashMap<String, List<BlogDTO>>();
+        // 获取热门文章
+        List<Blog> hotBlogs = blogMapper.selectByClicked();
+        List<BlogDTO> hotBlogDTO = new ArrayList<BlogDTO>();
+        for (Blog blog : hotBlogs) {
+            BlogDTO dto = new BlogDTO();
+            dto.setBlog(blog);
+            dto.setUsername(userMapper.selectById(blog.getUid()).getNickname());
+            if (blog.getKind() != null) {
+                dto.setKind(kindMapper.selectById(blog.getKind()).getName());
+            }
+            hotBlogDTO.add(dto);
+        }
+        // TODO 获取所有文章以及文章第一页
+        return res;
     }
 
     /**
