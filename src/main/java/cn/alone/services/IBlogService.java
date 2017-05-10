@@ -14,6 +14,7 @@ public interface IBlogService {
     public Blog selectById(Integer bid);
     public List<Blog> getByPage(Integer startPage);
     public List<Blog> getBlogsOfKind(Integer kind, Integer startPage);
+    public List<Blog> getHotBlogs();
     public int getNumsOfKind(Integer kind);
     public boolean privateBlog(Integer bid);
     public boolean update(Blog blog);

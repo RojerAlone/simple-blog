@@ -67,6 +67,10 @@ public class BlogServiceImpl implements IBlogService {
         return blogMapper.selectBlogsByKind(kind, page.getStartPos(), page.getSize());
     }
 
+    public List<Blog> getHotBlogs() {
+        return blogMapper.selectByClicked();
+    }
+
     /**
      * 获取某类文章的个数
      * @param kind

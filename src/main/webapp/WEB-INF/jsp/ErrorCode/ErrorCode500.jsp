@@ -13,7 +13,7 @@
 </head>
 <body>
     <jsp:include page="../common/top.jsp" />
-    <h1>服务器内部错误</h1>
+    <h1>服务器内部错误，请联系管理员。</h1>
     <jsp:include page="../common/bottom.jsp" />
 </body>
 </html>

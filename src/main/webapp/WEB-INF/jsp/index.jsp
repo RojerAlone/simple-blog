@@ -4,6 +4,13 @@
 <head>
     <jsp:include page="common/head.jsp" />
     <title>RojerAlone</title>
+    <script>
+        $(document).ready(function () {
+            $.get("/blog/hotblogs", function (data, status) {
+                alert("data:" + data + ",status:" + status);
+            });
+        });
+    </script>
 </head>
 <body>
     <jsp:include page="common/top.jsp" />
@@ -88,5 +95,21 @@
         </div>
     </div>
     <jsp:include page="common/bottom.jsp" />
+    <%--<script>--%>
+        <%--${document}.ready(function () {--%>
+            <%--$.get("/blog/hotblogs", function (data, status) {--%>
+                <%--alert("data:" + data + ",status:" + status);--%>
+            <%--});--%>
+<%--//            $.ajax({--%>
+<%--//                url: "/blog/hotblogs",--%>
+<%--//                dataType: "JSON",--%>
+<%--//                type: "GET",--%>
+<%--//                cache: false,--%>
+<%--//                success: function (result) {--%>
+<%--//                    result.[]--%>
+<%--//                }--%>
+<%--//            });--%>
+        <%--});--%>
+    <%--</script>--%>
 </body>
 </html>

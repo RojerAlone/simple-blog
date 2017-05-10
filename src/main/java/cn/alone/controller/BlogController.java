@@ -7,6 +7,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.List;
 
 /**
  * Created by RojerAlone on 2017/4/9.
@@ -17,7 +20,6 @@ public class BlogController  extends AbstractController{
 
     @Autowired
     private IBlogService blogService;
-
 
     @RequestMapping(value = "write", method = RequestMethod.POST)
     public String write(Blog blog) {
@@ -69,4 +71,14 @@ public class BlogController  extends AbstractController{
         }
         return "newblog";
     }
+
+    // 需要jackson包，否则出现406错误
+    @RequestMapping(value = "hotblogs",
+            method = RequestMethod.GET,
+            produces = {"application/json;charset=UTF-8"})
+    @ResponseBody
+    public List<Blog> getHotBlogs() {
+        return blogService.getHotBlogs();
+    }
+
 }

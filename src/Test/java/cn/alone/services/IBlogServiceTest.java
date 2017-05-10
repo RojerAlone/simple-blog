@@ -79,7 +79,7 @@ public class IBlogServiceTest {
                 logger.info("设置失败");
             }
         } catch (Exception e) {
-            logger.error("错误",e );
+            logger.error("错误", e);
         }
     }
 
@@ -106,6 +106,23 @@ public class IBlogServiceTest {
     public void getBlogsOfKind() throws Exception {
         try {
             List<Blog> blogs = service.getBlogsOfKind(1, 1);
+            if (blogs == null) {
+                logger.info("查询结果为null");
+            } else if (blogs.size() == 0) {
+                logger.info("结果集为0");
+            } else {
+                logger.info("查询成功");
+                System.out.println(blogs);
+            }
+        } catch (Exception e) {
+            logger.error("错误", e);
+        }
+    }
+
+    @Test
+    public void getHotBlogs() throws Exception {
+        try {
+            List<Blog> blogs = service.getHotBlogs();
             if (blogs == null) {
                 logger.info("查询结果为null");
             } else if (blogs.size() == 0) {

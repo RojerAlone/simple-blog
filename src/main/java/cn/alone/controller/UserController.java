@@ -21,7 +21,7 @@ public class UserController extends AbstractController{
     public String selectUserByPrimaryId() {
         User user = userService.selectById(1);
         this.getModel().addAttribute("user", user);
-        return "test";
+        return "redirectToIndex";
     }
 
     @RequestMapping(value = "register", method = RequestMethod.POST)
