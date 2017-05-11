@@ -73,12 +73,12 @@ public class BlogController  extends AbstractController{
     }
 
     // 需要jackson包，否则出现406错误
-    @RequestMapping(value = "hotblogs",
-            method = RequestMethod.GET,
-            produces = {"application/json;charset=UTF-8"})
-    @ResponseBody
-    public List<Blog> getHotBlogs() {
-        return blogService.getHotBlogs();
-    }
+//    @RequestMapping(value = "hotblogs",
+//            method = RequestMethod.GET,
+//            produces = {"application/json;charset=UTF-8"})
+//    @ResponseBody
+//    public List<Blog> getHotBlogs() {
+//        return blogService.get();
+//    }
 
 }

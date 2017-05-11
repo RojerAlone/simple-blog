@@ -46,12 +46,18 @@ public class BlogServiceImpl implements IBlogService {
     }
 
     @Transactional  // 声明为一个事务，默认出现RuntimeException会回滚
-    public Blog selectById(Integer bid) {
+    public BlogDTO selectById(Integer bid) {
         Blog blog = blogMapper.selectById(bid);
         if (blog != null) { // 查询到结果以后，对点击数进行更新
             blogMapper.updateClicked(bid);  // 点击数+1
         }
-        return blog;
+        BlogDTO res = new BlogDTO();
+        res.setBlog(blog);
+        if (blog.getKind() != null) {
+            res.setKind(kindMapper.selectById(blog.getKind()).getName());
+        }
+        res.setUsername(userMapper.selectById(blog.getUid()).getNickname());
+        return res;
     }
 
     /**
@@ -92,7 +98,21 @@ public class BlogServiceImpl implements IBlogService {
             }
             hotBlogDTO.add(dto);
         }
-        // TODO 获取所有文章以及文章第一页
+        res.put("hotBlogs", hotBlogDTO);
+        // 获取文章第一页
+        List<Blog> firstPage = this.getByPage(1);
+        List<BlogDTO> firstPageDto = new ArrayList<BlogDTO>();
+        for (Blog blog : firstPage) {
+            BlogDTO dto = new BlogDTO();
+            dto.setBlog(blog);
+            dto.setUsername(userMapper.selectById(blog.getUid()).getNickname());
+            if (blog.getKind() != null) {
+                dto.setKind(kindMapper.selectById(blog.getKind()).getName());
+            }
+            firstPageDto.add(dto);
+        }
+        res.put("firstPage", firstPageDto);
+        // TODO 获取所有文章
         return res;
     }
 

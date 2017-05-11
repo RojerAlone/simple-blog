@@ -13,7 +13,7 @@ public interface IBlogService {
 
     public int write(Blog blog);
     public boolean delBlog(Integer bid);
-    public Blog selectById(Integer bid);
+    public BlogDTO selectById(Integer bid);
     public List<Blog> getByPage(Integer startPage);
     public List<Blog> getBlogsOfKind(Integer kind, Integer startPage);
     public Map<String, List<BlogDTO>> getIndexBlogs();
