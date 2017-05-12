@@ -15,7 +15,7 @@ public class Blog {
     private String title;
     private String content;
     private Integer kind;
-    private Integer up;
+    private Integer up;         // 是否置顶
     private Integer uid;
     private Timestamp ctime;
     private Timestamp utime;

@@ -12,8 +12,8 @@ public interface BlogMapper {
 
     int insert(Blog blog);
     Blog selectById(Integer bid);
-    Blog selectKeyInfoById(Integer bid);   // 搜索关键信息，如标题、作者、时间、点击数和评论数
-    List<Blog> selectByUp();            // 搜索点赞最多的5篇文章
+    Blog selectKeyInfoById(Integer bid);// 搜索关键信息，如标题、作者、时间、点击数和评论数
+//    List<Blog> selectByUp();            // 获取置顶文章     包含在selectOnePage里，不需要单独获取
     List<Blog> selectByComment();       // 搜索评论最多的5篇文章
     List<Blog> selectByClicked();       // 搜索点击量最多的5篇文章
     List<Blog> selectOnePage(@Param("startPos") Integer startPos, @Param("size") Integer size);

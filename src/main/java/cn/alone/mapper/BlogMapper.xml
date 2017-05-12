@@ -35,13 +35,13 @@
         from `blog`
         where bid = #{bid}
     </select>
-    <select id="selectByUp" resultMap="Blog">
-        select
-        <include refid="all_col" />
-        from `blog`
-        where stat = 0
-        order by `up` desc,`ptime` desc limit 5
-    </select>
+    <!--包含在selectOnePage里，不需要单独获取-->
+    <!--<select id="selectByUp" resultMap="Blog">-->
+        <!--select-->
+        <!--<include refid="all_col" />-->
+        <!--from `blog`-->
+        <!--where stat = 0 and up = 1-->
+    <!--</select>-->
     <select id="selectByComment" resultMap="Blog">
         select
         <include refid="all_col" />
@@ -56,12 +56,13 @@
         where stat = 0
         order by `clicked` desc, `ptime` desc limit 5
     </select>
+    <!-- 获取文章时考虑置顶文章 -->
     <select id="selectOnePage" resultMap="Blog">
         select
         <include refid="all_col" />
         from `blog`
         where stat = 0
-        order by `ptime` desc limit #{startPos}, #{size}
+        order by `up` desc, `ptime` desc limit #{startPos}, #{size}
     </select>
     <select id="selectBlogsByKind" resultMap="Blog">
         select

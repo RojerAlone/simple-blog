@@ -1,15 +1,13 @@
 package cn.alone.controller;
 
 import cn.alone.pojo.Blog;
+import cn.alone.pojo.dto.BlogDTO;
 import cn.alone.services.IBlogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-
-import java.util.List;
 
 /**
  * Created by RojerAlone on 2017/4/9.
@@ -47,7 +45,7 @@ public class BlogController  extends AbstractController{
 
     @RequestMapping(value = "{bid}", method = RequestMethod.GET)
     public String getBlog(@PathVariable Integer bid) {
-        Blog blog;
+        BlogDTO blog;
         if ((blog = blogService.selectById(bid)) == null) {
             return "ErrorCode/ErrorCode404";
         }
@@ -65,7 +63,7 @@ public class BlogController  extends AbstractController{
 
     @RequestMapping(value = "edit", method = RequestMethod.GET)
     public String edit(int bid) {
-        Blog blog;
+        BlogDTO blog;
         if ((blog = blogService.selectById(bid)) != null) {
             this.getModel().addAttribute("blog", blog);
         }

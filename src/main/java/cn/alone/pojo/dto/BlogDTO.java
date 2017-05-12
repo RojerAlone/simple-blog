@@ -44,4 +44,14 @@ public class BlogDTO {
     public void setKind(String kind) {
         this.kind = kind;
     }
+
+    @Override
+    public String toString() {
+        return "BlogDTO{" +
+                "blog=" + blog +
+                ", username='" + username + '\'' +
+                ", comment=" + comment +
+                ", kind='" + kind + '\'' +
+                '}';
+    }
 }
