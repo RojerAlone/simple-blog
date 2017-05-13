@@ -8,7 +8,7 @@
 <html>
 <head>
     <jsp:include page="common/head.jsp" />
-    <title>${blog.title}</title>
+    <title>${blog.blog.title}</title>
 </head>
 <body>
 <jsp:include page="common/top.jsp" />

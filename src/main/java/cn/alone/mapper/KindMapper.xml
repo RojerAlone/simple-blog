@@ -47,6 +47,7 @@
         select
         <include refid="all_col" />
         from `kind`
+        order by `level` desc
     </select>
     <select id="selectByName" resultType="java.lang.Integer" parameterType="java.lang.String">
         select

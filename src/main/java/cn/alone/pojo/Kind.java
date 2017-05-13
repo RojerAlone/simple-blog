@@ -11,6 +11,7 @@ public class Kind {
     private Integer level;
     private Timestamp ctime;
     private Timestamp utime;
+    private Integer nums;
 
     public Integer getKid() {
         return kid;
@@ -52,6 +53,14 @@ public class Kind {
         this.utime = utime;
     }
 
+    public Integer getNums() {
+        return nums;
+    }
+
+    public void setNums(Integer nums) {
+        this.nums = nums;
+    }
+
     @Override
     public String toString() {
         return "Kind{" +
@@ -60,6 +69,7 @@ public class Kind {
                 ", level=" + level +
                 ", ctime=" + ctime +
                 ", utime=" + utime +
+                ", nums=" + nums +
                 '}';
     }
 }

@@ -4,13 +4,13 @@
 <head>
     <jsp:include page="common/head.jsp" />
     <title>RojerAlone</title>
-    <script>
-        $(document).ready(function () {
-            $.get("/blog/hotblogs", function (data, status) {
-                alert("data:" + data + ",status:" + status);
-            });
-        });
-    </script>
+    <%--<script>--%>
+        <%--$(document).ready(function () {--%>
+            <%--$.get("/blog/hotblogs", function (data, status) {--%>
+                <%--alert("data:" + data + ",status:" + status);--%>
+            <%--});--%>
+        <%--});--%>
+    <%--</script>--%>
 </head>
 <body>
     <jsp:include page="common/top.jsp" />
@@ -27,6 +27,32 @@
                                 个人简介
                             </p>
                         </div>
+                        <%--文章类别，有分类时才显示--%>
+                        <c:if test="${not empty kinds}">
+                            <div class="row">
+                                <h4><span class="label label-info">文章分类</span></h4>
+                                <ul class="list-group">
+                                    <c:forEach items="${kinds}" var="kind">
+                                        <a href="/kind/${kind.kid.intValue()}" class="list-group-item text-overflow">
+                                            ${kind.name}<span class="badge badge-info">${kind.nums}</span>
+                                        </a>
+                                    </c:forEach>
+                                </ul>
+                            </div>
+                        </c:if>
+                        <%--点击量前五的文章--%>
+                        <c:if test="${not empty hotBlogs}">
+                            <div class="row">
+                                <h4><span class="label label-info">热门文章</span></h4>
+                                <ul class="list-group">
+                                    <c:forEach items="${hotBlogs}" var="blog">
+                                        <a href="/blog/${blog.blog.bid}" class="list-group-item">
+                                            ${blog.blog.title}<span class="badge badge-info">${blog.blog.clicked}</span>
+                                        </a>
+                                    </c:forEach>
+                                </ul>
+                            </div>
+                        </c:if>
                     </div>
                 </div>
             </div>

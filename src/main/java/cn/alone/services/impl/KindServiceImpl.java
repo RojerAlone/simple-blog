@@ -1,5 +1,6 @@
 package cn.alone.services.impl;
 
+import cn.alone.mapper.BlogMapper;
 import cn.alone.mapper.KindMapper;
 import cn.alone.pojo.Kind;
 import cn.alone.services.IKindService;
@@ -17,6 +18,8 @@ public class KindServiceImpl implements IKindService {
 
     @Autowired
     private KindMapper kindMapper;
+    @Autowired
+    private BlogMapper blogMapper;
 
     /**
      * 不可以添加重名的类别，但是可以修改成重名的
@@ -35,8 +38,13 @@ public class KindServiceImpl implements IKindService {
         return kindMapper.deleteById(kid);
     }
 
+    @Transactional
     public List<Kind> getAllKind() {
-        return kindMapper.selectAll();
+        List<Kind> kinds = kindMapper.selectAll();
+        for (Kind kind : kinds) {
+            kind.setNums(blogMapper.getNumsByKind(kind.getKid()));
+        }
+        return kinds;
     }
 
     public Kind selectById(Integer kid) {

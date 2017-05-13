@@ -72,16 +72,16 @@ public class BlogMapperTest {
         }
     }
 
-    @Test
-    public void selectByUp() throws Exception {
-        try {
-            List<Blog> blogs = mapper.selectByUp();
-            logger.info("根据点赞数查询成功");
-            System.out.println(blogs);
-        } catch (Exception e) {
-            logger.error("根据点赞数查询失败", e);
-        }
-    }
+//    @Test
+//    public void selectByUp() throws Exception {
+//        try {
+//            List<Blog> blogs = mapper.selectByUp();
+//            logger.info("根据点赞数查询成功");
+//            System.out.println(blogs);
+//        } catch (Exception e) {
+//            logger.error("根据点赞数查询失败", e);
+//        }
+//    }
 
     @Test
     public void selectByComment() throws Exception {

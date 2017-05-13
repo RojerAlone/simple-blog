@@ -1,7 +1,7 @@
 package cn.alone.services;
 
 import cn.alone.pojo.Blog;
-import cn.alone.services.impl.BlogServiceImpl;
+import cn.alone.pojo.dto.BlogDTO;
 import org.apache.log4j.Logger;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -40,7 +40,7 @@ public class IBlogServiceTest {
     public void selectById() throws Exception {
         int id = 2;
         try {
-            Blog blog = service.selectById(id);
+            BlogDTO blog = service.selectById(id);
             if (blog != null) {
                 logger.info("查询成功");
                 System.out.println(blog);
@@ -119,21 +119,21 @@ public class IBlogServiceTest {
         }
     }
 
-    @Test
-    public void getHotBlogs() throws Exception {
-        try {
-            List<Blog> blogs = service.getHotBlogs();
-            if (blogs == null) {
-                logger.info("查询结果为null");
-            } else if (blogs.size() == 0) {
-                logger.info("结果集为0");
-            } else {
-                logger.info("查询成功");
-                System.out.println(blogs);
-            }
-        } catch (Exception e) {
-            logger.error("错误", e);
-        }
-    }
+//    @Test
+//    public void getHotBlogs() throws Exception {
+//        try {
+//            List<Blog> blogs = service.getHotBlogs();
+//            if (blogs == null) {
+//                logger.info("查询结果为null");
+//            } else if (blogs.size() == 0) {
+//                logger.info("结果集为0");
+//            } else {
+//                logger.info("查询成功");
+//                System.out.println(blogs);
+//            }
+//        } catch (Exception e) {
+//            logger.error("错误", e);
+//        }
+//    }
 
 }

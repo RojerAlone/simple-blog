@@ -112,7 +112,6 @@ public class BlogServiceImpl implements IBlogService {
             firstPageDto.add(dto);
         }
         res.put("firstPage", firstPageDto);
-        // TODO 获取所有文章
         return res;
     }
 
