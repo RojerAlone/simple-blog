@@ -16,6 +16,12 @@
     display: inline-block;
     width: 85%;
 }
+
+/*文章列表标签样式*/
+.latest-article {
+    margin-bottom: 10px;
+    border-bottom: #5bc0de 4px solid;
+}
 /*文章的标题样式*/
 .all-title-overflow {
     text-overflow: ellipsis;
