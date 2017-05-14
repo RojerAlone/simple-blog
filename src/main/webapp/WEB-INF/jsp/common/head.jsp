@@ -16,12 +16,13 @@
       integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
       crossorigin="anonymous">
 <link href="/css/scrollup.css" rel="stylesheet">
+<link href="/css/title.css" rel="stylesheet">
 <link id="scrollUpTheme" rel="stylesheet" href="/css/scrollup.css">
 
 <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
 <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
 
-<script src="/js/jquery.scrollUp.min.js"></script>
+<%--<script src="/js/jquery.scrollUp.min.js"></script>--%>
 <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
 <script src="https://cdn.bootcss.com/jquery/3.2.0/jquery.min.js"></script>
 <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
