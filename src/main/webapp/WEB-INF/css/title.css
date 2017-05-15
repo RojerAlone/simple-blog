@@ -20,7 +20,20 @@
 /*文章列表标签样式*/
 .latest-article {
     margin-bottom: 10px;
-    border-bottom: #5bc0de 4px solid;
+    border-bottom: 4px solid #5bc0de;
+}
+/*每个文章的一个模块*/
+.article-panel {
+    margin-right: 15px;
+    margin-left: 15px;
+    border: 1px solid #eaeaea;
+}
+/*文章的标题*/
+.article-title {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    display: inline-block;
 }
 /*文章的标题样式*/
 .all-title-overflow {

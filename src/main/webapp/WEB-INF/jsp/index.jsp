@@ -60,7 +60,7 @@
                                 <h4><span class="label label-info">文章分类</span></h4>
                                 <ul class="list-group">
                                     <c:forEach items="${kinds}" var="kind">
-                                        <a href="/kind/${kind.kid.intValue()}" class="list-group-item text-overflow">
+                                        <a href="/kind/${kind.kid.intValue()}" class="list-group-item">
                                             <div class="left-panel">${kind.name}</div>
                                             <span class="badge badge-info">${kind.nums}</span>
                                         </a>
@@ -135,7 +135,26 @@
                 <div class="latest-article">
                     <h2><span class="label label-info">最新文章</span></h2>
                 </div>
-                <p>一个计数信号量。从概念上讲，信号量维护了一个许可集。如有必要，在许可可用前会阻塞每一个 acquire()，然后再获取该许可。每个 release() 添加一个许可，从而可能释放一个正在阻塞的获取者。但是，不使用实际的许可对象，Semaphore 只对可用许可的号码进行计数，并采取相应的行动。 </p>
+                    <div class="row">
+                        <c:forEach items="${firstPage}" var="blog">
+                            <div class="article-panel">
+                                <a href="/blog/${blog.blog.bid}" class="article-title">
+                                    <h4>
+                                        <c:if test="${blog.blog.up == 1}">
+                                            <font color="red">[置顶]</font>
+                                        </c:if>
+                                        ${blog.blog.title}
+                                    </h4>
+                                </a>
+                                <p>
+                                    ${blog.blog.content}
+                                </p>
+
+                            </div>
+                        </c:forEach>
+                    </div>
+
+                    <p>一个计数信号量。从概念上讲，信号量维护了一个许可集。如有必要，在许可可用前会阻塞每一个 acquire()，然后再获取该许可。每个 release() 添加一个许可，从而可能释放一个正在阻塞的获取者。但是，不使用实际的许可对象，Semaphore 只对可用许可的号码进行计数，并采取相应的行动。 </p>
                 <p>一个计数信号量。从概念上讲，信号量维护了一个许可集。如有必要，在许可可用前会阻塞每一个 acquire()，然后再获取该许可。每个 release() 添加一个许可，从而可能释放一个正在阻塞的获取者。但是，不使用实际的许可对象，Semaphore 只对可用许可的号码进行计数，并采取相应的行动。 </p>
                 <p>一个计数信号量。从概念上讲，信号量维护了一个许可集。如有必要，在许可可用前会阻塞每一个 acquire()，然后再获取该许可。每个 release() 添加一个许可，从而可能释放一个正在阻塞的获取者。但是，不使用实际的许可对象，Semaphore 只对可用许可的号码进行计数，并采取相应的行动。 </p>
                 <p>一个计数信号量。从概念上讲，信号量维护了一个许可集。如有必要，在许可可用前会阻塞每一个 acquire()，然后再获取该许可。每个 release() 添加一个许可，从而可能释放一个正在阻塞的获取者。但是，不使用实际的许可对象，Semaphore 只对可用许可的号码进行计数，并采取相应的行动。 </p>
