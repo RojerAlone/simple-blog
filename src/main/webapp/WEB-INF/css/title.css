@@ -19,14 +19,15 @@
 
 /*文章列表标签样式*/
 .latest-article {
-    margin-bottom: 10px;
-    border-bottom: 4px solid #5bc0de;
+    margin-bottom: 20px;
 }
 /*每个文章的一个模块*/
 .article-panel {
     margin-right: 15px;
     margin-left: 15px;
-    border: 1px solid #eaeaea;
+    border-top: 1px dashed #ddd;
+    border-bottom: 1px dashed #ddd;
+    padding: 15px 0 15px 0;
 }
 /*文章的标题*/
 .article-title {
@@ -34,8 +35,11 @@
     overflow: hidden;
     white-space: nowrap;
     display: inline-block;
+    color: #000;
+    padding-left: 15px;
+    padding-right: 15px;
 }
-/*文章的标题样式*/
-.all-title-overflow {
-    text-overflow: ellipsis;
+/*文章的前言样式*/
+.article-content {
+    text-indent: 2em;
 }
