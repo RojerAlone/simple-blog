@@ -19,13 +19,18 @@ public class BlogController  extends AbstractController{
     @Autowired
     private IBlogService blogService;
 
+    @RequestMapping(value = "write", method = RequestMethod.GET)
+    public String write() {
+        return "editor";
+    }
+
     @RequestMapping(value = "write", method = RequestMethod.POST)
     public String write(Blog blog) {
 //        blog.setUid((User) this.getSession().getAttribute("user"));
         if (blogService.write(blog) == 1) {
             return "redirect:" + getBlog(blog.getBid());
         }
-        return "newblog";
+        return "editor";
     }
     @RequestMapping(value = "delete", method = RequestMethod.DELETE)
     public String delete(int bid) {
