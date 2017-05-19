@@ -92,19 +92,3 @@ body {
 .btns button:hover, .btn:hover {
     background: #f6f6f6;
 }
-
-.title-text-input {
-    width: 90%;
-    vertical-align: middle;
-    text-align: left;
-    font: 200 30px/40px "microsoft yahei";
-    overflow: hidden;
-    white-space: nowrap;
-}
-
-.text-submit {
-    width: 9%;
-    vertical-align: middle;
-    text-align: center;
-    font-size: 25px;
-}

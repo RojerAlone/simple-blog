@@ -26,40 +26,66 @@
     <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"
             integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
             crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="/css/editormd-style.css"/>
-    <link rel="stylesheet" href="/css/editormd.css"/>
+    <link rel="stylesheet" href="/css/editormd-style.css" charset="UTF-8"/>
+    <link rel="stylesheet" href="/css/editormd.css" charset="UTF-8"/>
+    <title>编辑文章</title>
 </head>
 <body>
+    <jsp:include page="common/top.jsp" />
+    <%--<form onsubmit="article_commit()">--%>
+    <%--<form action="/blog/write" method="post">--%>
+    <form>
     <div id="layout">
         <header>
-            <h1>Simple example</h1>
+            <input type="text" id="title" name="title" class="title-text-input" placeholder="文章标题">
+            <input type="submit" class="text-submit" value="发表文章" onclick="article_commit()">
         </header>
-        <div id="test-editormd">
-            <textarea style="display:none;">
-            </textarea>
+        <div id="mdcode">
+            <textarea style="display:none;"></textarea>
         </div>
     </div>
+    </form>
     <script src="/js/editormd.min.js" charset="UTF-8"></script>
     <script type="text/javascript">
-        var testEditor;
+        $('body').css({
+            "overflow-x":"hidden"
+        });
+        var editor;
         $(function () {
-            testEditor = editormd("test-editormd", {
+            editor = editormd("mdcode", {
                 width: "90%",
-                height: 800,
+                height: 780,
                 syncScrolling: "single",
                 path: "/lib/"
+//                emoji: true,
+//                saveHTMLToTextarea: true,
+//                imageUpload: true
             });
-
-            /*
-             // or
-             testEditor = editormd({
-             id      : "test-editormd",
-             width   : "90%",
-             height  : 640,
-             path    : "../lib/"
-             });
-             */
         });
+        function clickk () {
+            alert(editor.getMarkdown());
+//            alert(document.getElementById("mdcode").textContent);
+            console.log(editormd.getMarkdown());
+        }
+        // 提交表单
+        function article_commit() {
+            var params = {
+                "title": document.getElementById("title").value,
+                "content": editor.getMarkdown()
+            };
+//            $.post("/blog/write", params, function (data, status) {
+//                alert("data:" + data + " status" + status);
+//            });
+            $.ajax({
+                url: "/blog/write",
+                type: "post",
+                data: param,
+//                dataType: "json",
+                success: function(data, status) {
+                    alert("data:" + data + " status" + status);
+                }
+            });
+        }
     </script>
 </body>
 </html>

@@ -27,8 +27,10 @@ public class BlogController  extends AbstractController{
     @RequestMapping(value = "write", method = RequestMethod.POST)
     public String write(Blog blog) {
 //        blog.setUid((User) this.getSession().getAttribute("user"));
+        blog.setUid(1);
+        System.out.println(blog);
         if (blogService.write(blog) == 1) {
-            return "redirect:" + getBlog(blog.getBid());
+            return "redirect:" + blog.getBid();
         }
         return "editor";
     }
