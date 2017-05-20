@@ -7,11 +7,12 @@
 <%@ include file="common/taglib.jsp" %>
 <html>
 <head>
-    <jsp:include page="common/head.jsp" />
+    <%--<jsp:include page="common/head.jsp" />--%>
+    <%@ include file="common/head.jsp"%>
     <title>${blog.blog.title}</title>
-    <link rel="stylesheet" href="/css/editormd-style.css" charset="UTF-8"/>
+    <%--<link rel="stylesheet" href="/css/editormd-style.css" charset="UTF-8"/>--%>
     <link rel="stylesheet" href="/css/editormd.css" charset="UTF-8"/>
-    <link rel="stylesheet" href="/css/style.css" />
+    <%--<link rel="stylesheet" href="/css/style.css" />--%>
     <link rel="stylesheet" href="/css/editormd.preview.css" />
     <link rel="icon" href="/smile.ico" type="image/x-icon" >
     <style>
@@ -25,7 +26,7 @@
 <jsp:include page="common/top.jsp" />
 <div class="container-fluid">
     <div class="row">
-        <jsp:include page="common/leftpanel.jsp" />
+        <%@ include file="common/leftpanel.jsp"%>
         <div class="col-lg-6">
             <div id="layout">
                 <h1>${blog.blog.title}</h1>
@@ -43,7 +44,7 @@
 <script>
     var jQuery = Zepto;  // 为了避免修改flowChart.js和sequence-diagram.js的源码，所以使用Zepto.js时想支持flowChart/sequenceDiagram就得加上这一句
 </script> -->
-<script src="https://cdn.bootcss.com/jquery/3.2.0/jquery.min.js"></script>
+<%--<script src="https://cdn.bootcss.com/jquery/3.2.0/jquery.min.js"></script>--%>
 <script src="/lib/marked.min.js"></script>
 <script src="/lib/prettify.min.js"></script>
 

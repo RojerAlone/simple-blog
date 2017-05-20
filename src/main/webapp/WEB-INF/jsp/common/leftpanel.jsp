@@ -50,7 +50,7 @@
                     <ul class="list-group">
                         <c:forEach items="${kinds}" var="kind">
                             <a href="/kind/${kind.kid.intValue()}" class="list-group-item">
-                                <div class="left-panel">${kind.name}</div>
+                                <div class="left-panel-name">${kind.name}</div>
                                 <span class="badge badge-info">${kind.nums}</span>
                             </a>
                         </c:forEach>
@@ -64,7 +64,7 @@
                     <ul class="list-group">
                         <c:forEach items="${hotBlogs}" var="blog">
                             <a href="/blog/${blog.blog.bid}" class="list-group-item">
-                                <div class="left-panel">${blog.blog.title}</div>
+                                <div class="left-panel-name">${blog.blog.title}</div>
                                 <span class="badge badge-info">${blog.blog.clicked}</span>
                             </a>
                         </c:forEach>

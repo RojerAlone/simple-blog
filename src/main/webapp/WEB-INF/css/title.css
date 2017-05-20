@@ -9,12 +9,22 @@
     margin-right: auto;
 }
 /*左侧概要栏长度过长缩写*/
-.left-panel {
+.left-panel-name {
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
     display: inline-block;
     width: 85%;
+}
+
+/*左侧概要栏使用的h4标签会被editor.md样式覆盖*/
+.left-panel-h {
+    /*margin-top: 10px;*/
+    /*margin-bottom: 10px;*/
+    /*font-family: inherit;*/
+    /*font-weight: 500;*/
+    /*line-height: 1.1;*/
+    /*color: inherit;*/
 }
 
 /*文章列表标签样式*/
@@ -38,6 +48,24 @@
     color: #000;
     padding-left: 15px;
     padding-right: 15px;
+}
+/*文章的发布日期、阅读次数、评论*/
+.article-info {
+    color: #999;
+    font: 400 12px/22px Arial;
+    text-align: left;
+    margin: 0 -10px;
+    padding: 0 20px 5px;
+    overflow: hidden;
+}
+/*每一个标签的格式*/
+.article-info-tag {
+    margin-right: 20px;
+}
+/*如果是管理员那么可以进行文章的编辑删除*/
+.article-info-manager {
+    float: right;
+    margin-left: 20px;
 }
 /*文章的前言样式*/
 .article-content {

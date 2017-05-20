@@ -29,6 +29,9 @@
     <link rel="stylesheet" href="/css/editormd-style.css" charset="UTF-8"/>
     <link rel="stylesheet" href="/css/editormd.css" charset="UTF-8"/>
     <title>编辑文章</title>
+    <script>
+        console.log("test")
+    </script>
 </head>
 <body>
     <jsp:include page="common/top.jsp" />
@@ -37,11 +40,11 @@
     <%--<form>--%>
     <div id="layout">
         <header>
-            <input type="text" id="title" name="title" class="title-text-input" placeholder="文章标题">
+            <input type="text" id="title" name="title" class="title-text-input" placeholder="文章标题" value="${blog.title}">
             <input type="submit" class="text-submit" value="发表文章">
         </header>
         <div id="mdcode">
-            <textarea name="content" style="display:none;"></textarea>
+            <textarea name="content" style="display:none;">${blog.content}</textarea>
         </div>
     </div>
     </form>

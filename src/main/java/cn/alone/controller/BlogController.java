@@ -1,6 +1,7 @@
 package cn.alone.controller;
 
 import cn.alone.pojo.Blog;
+import cn.alone.pojo.User;
 import cn.alone.pojo.dto.BlogDTO;
 import cn.alone.services.IBlogService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,12 +27,19 @@ public class BlogController  extends AbstractController{
 
     @RequestMapping(value = "write", method = RequestMethod.POST)
     public String write(Blog blog) {
-//        blog.setUid((User) this.getSession().getAttribute("user"));
-        blog.setUid(1);
-        System.out.println(blog);
-        if (blogService.write(blog) == 1) {
-            return "redirect:" + blog.getBid();
+        blog.setUid((User)this.getSession().getAttribute("user").getUid());
+        // 如果是新文章，写入
+        if (blog.getBid() == null) {
+            if (blogService.write(blog) == 1) {
+                return "redirect:" + blog.getBid();
+            }
+        } else {
+            if (blogService.update(blog)) {
+                return "redirect:" + blog.getBid();
+            }
         }
+        blog.setUid(1);
+
         return "editor";
     }
     @RequestMapping(value = "delete", method = RequestMethod.DELETE)
@@ -72,9 +80,9 @@ public class BlogController  extends AbstractController{
     public String edit(int bid) {
         BlogDTO blog;
         if ((blog = blogService.selectById(bid)) != null) {
-            this.getModel().addAttribute("blog", blog);
+            this.getModel().addAttribute("blog", blog.getBlog());
         }
-        return "newblog";
+        return "editor";
     }
 
     // 需要jackson包，否则出现406错误

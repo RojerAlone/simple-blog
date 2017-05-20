@@ -78,6 +78,28 @@
                                         ${blog.blog.title}
                                     </h4>
                                 </a>
+                                <div class="article-info">
+                                    <span class="article-info-tag">
+                                        <span class="glyphicon glyphicon-time"></span>
+                                        <fmt:formatDate value="${blog.blog.ctime}" type="both" pattern="yyyy-MM-dd HH:mm" />
+                                    </span>
+                                    <span class="article-info-tag">
+                                        <span class="glyphicon glyphicon-user"></span>
+                                        ${blog.username}
+                                    </span>
+                                    <span class="article-info-tag">
+                                        <span class="glyphicon glyphicon-eye-open"></span>
+                                        浏览(${blog.blog.clicked})
+                                    </span>
+                                    <span class="article-info-tag">
+                                        <span class="glyphicon glyphicon-comment"></span>
+                                        评论(${blog.blog.comments})
+                                    </span>
+                                    <%--<c:if test="${sessionScope.containsKey(user)}">--%>
+                                        <a href="/blog/delete/" class="article-info-manager">删除</a>
+                                        <a href="/blog/edit?bid=${blog.blog.bid}" class="article-info-manager">编辑</a>
+                                    <%--</c:if>--%>
+                                </div>
                                 <div class="article-content">
                                     ${blog.blog.content}
                                 </div>
