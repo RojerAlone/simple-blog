@@ -26,7 +26,7 @@ public class Redirect extends AbstractController{
         Map<String, List<BlogDTO>> indexBlogs = blogService.getIndexBlogs();
         this.getModel().addAttribute("hotBlogs", indexBlogs.get("hotBlogs"));   // 热门文章前五名
         this.getModel().addAttribute("firstPage", indexBlogs.get("firstPage")); // 第一页的文章
-        this.getModel().addAttribute("kinds", kindService.getAllKind());
+        this.getModel().addAttribute("kinds", kindService.getAllKind());        // 文章类别
         return "index";
     }
 

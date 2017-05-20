@@ -17,75 +17,6 @@
     <div class="container-fluid">
         <div class="row">
             <jsp:include page="common/leftpanel.jsp" />
-            <%--&lt;%&ndash;左侧信息栏&ndash;%&gt;--%>
-            <%--<div class="col-lg-4">--%>
-                <%--<div class="row">--%>
-                    <%--<div class="col-lg-6"></div>--%>
-                    <%--<div class="col-lg-6">--%>
-                        <%--<img class="img-head img-responsive img-rounded" src="/img/head.jpg">--%>
-                        <%--&lt;%&ndash;个人简介&ndash;%&gt;--%>
-                        <%--<div class="row">--%>
-                            <%--<center>--%>
-                                <%--<h3>RojerAlone</h3>--%>
-                                <%--<h4>Java Coder</h4>--%>
-                                <%--<span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> Shaanxi,China--%>
-                            <%--</center>--%>
-                        <%--</div>--%>
-                        <%--&lt;%&ndash;Follow me&ndash;%&gt;--%>
-                        <%--<div class="row">--%>
-                            <%--<h4><span class="label label-info">关注我</span></h4>--%>
-                            <%--<div class="col-lg-3">--%>
-                                <%--<a href="https://github.com/RojerAlone" target="_blank">--%>
-                                    <%--<img src="/img/github.png" class="img-rounded img-responsive">--%>
-                                <%--</a>--%>
-                            <%--</div>--%>
-                            <%--<div class="col-lg-3">--%>
-                                <%--<a href="http://blog.csdn.net/alone_rojer" target="_blank">--%>
-                                    <%--<img src="/img/csdn.png" class="img-rounded img-responsive">--%>
-                                <%--</a>--%>
-                            <%--</div>--%>
-                            <%--<div class="col-lg-3">--%>
-                                <%--<a href="http://www.weibo.com/u/5192122666" target="_blank">--%>
-                                    <%--<img src="/img/weibo.png" class="img-rounded img-responsive">--%>
-                                <%--</a>--%>
-                            <%--</div>--%>
-                            <%--<div class="col-lg-3">--%>
-                                <%--<a href="tencent://AddContact/?fromId=45&fromSubId=1&subcmd=all&uin=1091165843" target="_blank">--%>
-                                    <%--<img src="/img/qq.png" class="img-rounded img-responsive">--%>
-                                <%--</a>--%>
-                            <%--</div>--%>
-                        <%--</div>--%>
-                        <%--&lt;%&ndash;文章类别，有分类时才显示&ndash;%&gt;--%>
-                        <%--<c:if test="${not empty kinds}">--%>
-                            <%--<div class="row">--%>
-                                <%--<h4><span class="label label-info">文章分类</span></h4>--%>
-                                <%--<ul class="list-group">--%>
-                                    <%--<c:forEach items="${kinds}" var="kind">--%>
-                                        <%--<a href="/kind/${kind.kid.intValue()}" class="list-group-item">--%>
-                                            <%--<div class="left-panel">${kind.name}</div>--%>
-                                            <%--<span class="badge badge-info">${kind.nums}</span>--%>
-                                        <%--</a>--%>
-                                    <%--</c:forEach>--%>
-                                <%--</ul>--%>
-                            <%--</div>--%>
-                        <%--</c:if>--%>
-                        <%--&lt;%&ndash;点击量前五的文章&ndash;%&gt;--%>
-                        <%--<c:if test="${not empty hotBlogs}">--%>
-                            <%--<div class="row">--%>
-                                <%--<h4><span class="label label-info">热门文章</span></h4>--%>
-                                <%--<ul class="list-group">--%>
-                                    <%--<c:forEach items="${hotBlogs}" var="blog">--%>
-                                        <%--<a href="/blog/${blog.blog.bid}" class="list-group-item">--%>
-                                            <%--<div class="left-panel">${blog.blog.title}</div>--%>
-                                            <%--<span class="badge badge-info">${blog.blog.clicked}</span>--%>
-                                        <%--</a>--%>
-                                    <%--</c:forEach>--%>
-                                <%--</ul>--%>
-                            <%--</div>--%>
-                        <%--</c:if>--%>
-                    <%--</div>--%>
-                <%--</div>--%>
-            <%--</div>--%>
             <div class="col-lg-6">
                 <%--滚动播放--%>
                 <div class="container-fluid">
@@ -154,20 +85,6 @@
                             </div>
                         </c:forEach>
                     </div>
-
-                    <div class="article-content">一个计数信号量。从概念上讲，信号量维护了一个许可集。如有必要，在许可可用前会阻塞每一个 acquire()，然后再获取该许可。每个 release() 添加一个许可，从而可能释放一个正在阻塞的获取者。但是，不使用实际的许可对象，Semaphore 只对可用许可的号码进行计数，并采取相应的行动。 </div>
-                <p>一个计数信号量。从概念上讲，信号量维护了一个许可集。如有必要，在许可可用前会阻塞每一个 acquire()，然后再获取该许可。每个 release() 添加一个许可，从而可能释放一个正在阻塞的获取者。但是，不使用实际的许可对象，Semaphore 只对可用许可的号码进行计数，并采取相应的行动。 </p>
-                <p>一个计数信号量。从概念上讲，信号量维护了一个许可集。如有必要，在许可可用前会阻塞每一个 acquire()，然后再获取该许可。每个 release() 添加一个许可，从而可能释放一个正在阻塞的获取者。但是，不使用实际的许可对象，Semaphore 只对可用许可的号码进行计数，并采取相应的行动。 </p>
-                <p>一个计数信号量。从概念上讲，信号量维护了一个许可集。如有必要，在许可可用前会阻塞每一个 acquire()，然后再获取该许可。每个 release() 添加一个许可，从而可能释放一个正在阻塞的获取者。但是，不使用实际的许可对象，Semaphore 只对可用许可的号码进行计数，并采取相应的行动。 </p>
-                <p>一个计数信号量。从概念上讲，信号量维护了一个许可集。如有必要，在许可可用前会阻塞每一个 acquire()，然后再获取该许可。每个 release() 添加一个许可，从而可能释放一个正在阻塞的获取者。但是，不使用实际的许可对象，Semaphore 只对可用许可的号码进行计数，并采取相应的行动。 </p>
-                <p>一个计数信号量。从概念上讲，信号量维护了一个许可集。如有必要，在许可可用前会阻塞每一个 acquire()，然后再获取该许可。每个 release() 添加一个许可，从而可能释放一个正在阻塞的获取者。但是，不使用实际的许可对象，Semaphore 只对可用许可的号码进行计数，并采取相应的行动。 </p>
-                <p>一个计数信号量。从概念上讲，信号量维护了一个许可集。如有必要，在许可可用前会阻塞每一个 acquire()，然后再获取该许可。每个 release() 添加一个许可，从而可能释放一个正在阻塞的获取者。但是，不使用实际的许可对象，Semaphore 只对可用许可的号码进行计数，并采取相应的行动。 </p>
-                <p>一个计数信号量。从概念上讲，信号量维护了一个许可集。如有必要，在许可可用前会阻塞每一个 acquire()，然后再获取该许可。每个 release() 添加一个许可，从而可能释放一个正在阻塞的获取者。但是，不使用实际的许可对象，Semaphore 只对可用许可的号码进行计数，并采取相应的行动。 </p>
-                <p>一个计数信号量。从概念上讲，信号量维护了一个许可集。如有必要，在许可可用前会阻塞每一个 acquire()，然后再获取该许可。每个 release() 添加一个许可，从而可能释放一个正在阻塞的获取者。但是，不使用实际的许可对象，Semaphore 只对可用许可的号码进行计数，并采取相应的行动。 </p>
-                <p>一个计数信号量。从概念上讲，信号量维护了一个许可集。如有必要，在许可可用前会阻塞每一个 acquire()，然后再获取该许可。每个 release() 添加一个许可，从而可能释放一个正在阻塞的获取者。但是，不使用实际的许可对象，Semaphore 只对可用许可的号码进行计数，并采取相应的行动。 </p>
-                <p>一个计数信号量。从概念上讲，信号量维护了一个许可集。如有必要，在许可可用前会阻塞每一个 acquire()，然后再获取该许可。每个 release() 添加一个许可，从而可能释放一个正在阻塞的获取者。但是，不使用实际的许可对象，Semaphore 只对可用许可的号码进行计数，并采取相应的行动。 </p>
-                <p>一个计数信号量。从概念上讲，信号量维护了一个许可集。如有必要，在许可可用前会阻塞每一个 acquire()，然后再获取该许可。每个 release() 添加一个许可，从而可能释放一个正在阻塞的获取者。但是，不使用实际的许可对象，Semaphore 只对可用许可的号码进行计数，并采取相应的行动。 </p>
-                <p>一个计数信号量。从概念上讲，信号量维护了一个许可集。如有必要，在许可可用前会阻塞每一个 acquire()，然后再获取该许可。每个 release() 添加一个许可，从而可能释放一个正在阻塞的获取者。但是，不使用实际的许可对象，Semaphore 只对可用许可的号码进行计数，并采取相应的行动。 </p>
             </div>
             <div class="col-lg-2"></div>
         </div>

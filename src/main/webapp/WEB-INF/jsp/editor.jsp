@@ -33,15 +33,15 @@
 <body>
     <jsp:include page="common/top.jsp" />
     <%--<form onsubmit="article_commit()">--%>
-    <%--<form action="/blog/write" method="post">--%>
-    <form>
+    <form action="/blog/write" method="post">
+    <%--<form>--%>
     <div id="layout">
         <header>
             <input type="text" id="title" name="title" class="title-text-input" placeholder="文章标题">
-            <input type="submit" class="text-submit" value="发表文章" onclick="article_commit()">
+            <input type="submit" class="text-submit" value="发表文章">
         </header>
         <div id="mdcode">
-            <textarea style="display:none;"></textarea>
+            <textarea name="content" style="display:none;"></textarea>
         </div>
     </div>
     </form>
@@ -56,36 +56,12 @@
                 width: "90%",
                 height: 780,
                 syncScrolling: "single",
-                path: "/lib/"
-//                emoji: true,
+                path: "/lib/",
+                emoji: true
 //                saveHTMLToTextarea: true,
 //                imageUpload: true
             });
         });
-        function clickk () {
-            alert(editor.getMarkdown());
-//            alert(document.getElementById("mdcode").textContent);
-            console.log(editormd.getMarkdown());
-        }
-        // 提交表单
-        function article_commit() {
-            var params = {
-                "title": document.getElementById("title").value,
-                "content": editor.getMarkdown()
-            };
-//            $.post("/blog/write", params, function (data, status) {
-//                alert("data:" + data + " status" + status);
-//            });
-            $.ajax({
-                url: "/blog/write",
-                type: "post",
-                data: param,
-//                dataType: "json",
-                success: function(data, status) {
-                    alert("data:" + data + " status" + status);
-                }
-            });
-        }
     </script>
 </body>
 </html>
