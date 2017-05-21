@@ -27,7 +27,8 @@ public class BlogController  extends AbstractController{
 
     @RequestMapping(value = "write", method = RequestMethod.POST)
     public String write(Blog blog) {
-        blog.setUid((User)this.getSession().getAttribute("user").getUid());
+//        blog.setUid((User)this.getSession().getAttribute("user").getUid());
+        blog.setUid(1);
         // 如果是新文章，写入
         if (blog.getBid() == null) {
             if (blogService.write(blog) == 1) {

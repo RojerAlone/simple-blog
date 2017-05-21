@@ -47,6 +47,7 @@
             <textarea name="content" style="display:none;">${blog.content}</textarea>
         </div>
     </div>
+        <input type="text" name="bid" style="display: none;" value=" ${blog.bid}">
     </form>
     <script src="/js/editormd.min.js" charset="UTF-8"></script>
     <script type="text/javascript">
