@@ -96,14 +96,18 @@
                                         评论(${blog.blog.comments})
                                     </span>
                                     <%--<c:if test="${sessionScope.containsKey(user)}">--%>
-                                        <a href="/blog/delete/" class="article-info-manager">删除</a>
-                                        <a href="/blog/edit?bid=${blog.blog.bid}" class="article-info-manager">编辑</a>
+                                        <a href="/blog/delete?bid=${blog.blog.bid}" class="article-info-manager">删除</a>
+                                        <a href="/blog/edit?bid=${blog.blog.bid}" class="article-info-manager" methods="delete">编辑</a>
                                     <%--</c:if>--%>
                                 </div>
-                                <div class="article-content">
-                                    ${blog.blog.content}
-                                </div>
-
+                                <%--<div id="layout">--%>
+                                    <%--<div id="blog-content">&lt;%&ndash;  class="article-content" &ndash;%&gt;--%>
+                                        <%--<textarea id="append-test" style="display:none;">${blog.blog.content}</textarea>--%>
+                                    <%--</div>--%>
+                                <%--</div>--%>
+                                    <div class="article-content" class="article-content">
+                                        ${blog.blog.content.substring(0, blog.blog.content.length() > 200 ? 200 : blog.blog.content.length())}
+                                    </div>
                             </div>
                         </c:forEach>
                     </div>
@@ -112,8 +116,42 @@
         </div>
     </div>
     <jsp:include page="common/bottom.jsp" />
-    <%--<script>--%>
+    <script src="/lib/marked.min.js"></script>
+    <script src="/lib/prettify.min.js"></script>
+
+    <script src="/lib/raphael.min.js"></script>
+    <script src="/lib/underscore.min.js"></script>
+    <script src="/lib/sequence-diagram.min.js"></script>
+    <script src="/lib/flowchart.min.js"></script>
+    <script src="/lib/jquery.flowchart.min.js"></script>
+    <script src="/js/editormd.js"></script>
+    <script>
+        $(function () {
+            var editormdView;
+            editormdView = editormd.markdownToHTML("blog-content", {
+                htmlDecode      : "style,script,iframe",  // you can filter tags decode
+                emoji           : true,
+                taskList        : true,
+                tex             : true,  // 默认不解析
+                flowChart       : true,  // 默认不解析
+                sequenceDiagram : true,  // 默认不解析
+            });
+//            alert("1");
+//            var content = document.getElementById("article-content");
+//            alert(editormdView.innerText.substr(0, 100));
+//            alert(editormdView.getElementById("layout").innerText.substr(0, 100));
+//            content.innerText = editormdView.getElementById("layout").innerText.substr(0, 100);
+//            alert("3");
+//            content.innerText = "这是内容";
+        });
+        alert("zhongjian")
         <%--${document}.ready(function () {--%>
+        function content() {
+            alert("ready")
+            var content = document.getElementsByClassName("article-content");
+            content.innerText = "这是内容";
+        }
+        content();
             <%--$.get("/blog/hotblogs", function (data, status) {--%>
                 <%--alert("data:" + data + ",status:" + status);--%>
             <%--});--%>
@@ -126,7 +164,7 @@
 <%--//                    result.[]--%>
 <%--//                }--%>
 <%--//            });--%>
-        <%--});--%>
-    <%--</script>--%>
+        });
+    </script>
 </body>
 </html>

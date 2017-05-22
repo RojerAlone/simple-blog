@@ -33,7 +33,7 @@
                     </a>
                 </div>
                 <div class="col-lg-3">
-                    <a href="http://www.weibo.com/u/5192122666" target="_blank">
+                    <a href="http://www.weibo.com/RojerAlone" target="_blank">
                         <img src="/img/weibo.png" class="img-rounded img-responsive">
                     </a>
                 </div>

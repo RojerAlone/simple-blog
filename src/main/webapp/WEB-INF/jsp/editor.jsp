@@ -29,9 +29,9 @@
     <link rel="stylesheet" href="/css/editormd-style.css" charset="UTF-8"/>
     <link rel="stylesheet" href="/css/editormd.css" charset="UTF-8"/>
     <title>编辑文章</title>
-    <script>
-        console.log("test")
-    </script>
+    <%--<script>--%>
+        <%--console.log("test")--%>
+    <%--</script>--%>
 </head>
 <body>
     <jsp:include page="common/top.jsp" />
@@ -65,6 +65,7 @@
 //                saveHTMLToTextarea: true,
 //                imageUpload: true
             });
+//            alert(editormd.getTextareaSavedHTML());
         });
     </script>
 </body>
