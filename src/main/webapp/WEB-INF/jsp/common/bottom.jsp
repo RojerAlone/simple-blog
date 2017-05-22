@@ -4,7 +4,7 @@
   Time: 21:29
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<footer class="footer">
+<footer class="footer" style="margin-top: 80px;">
         <div class="container">
             <p class="text-center muted-credit">Copyright © 2017 RojerAlone</p>
         </div>

@@ -2,6 +2,8 @@ package cn.alone.services;
 
 import cn.alone.pojo.Blog;
 import cn.alone.pojo.dto.BlogDTO;
+import cn.alone.utils.PageUtil;
+import org.javatuples.Pair;
 
 import java.util.List;
 import java.util.Map;
@@ -14,9 +16,9 @@ public interface IBlogService {
     public int write(Blog blog);
     public boolean delBlog(Integer bid);
     public BlogDTO selectById(Integer bid);
-    public List<Blog> getByPage(Integer startPage);
+    public Pair<PageUtil, List<BlogDTO>> getByPage(Integer startPage);
     public List<Blog> getBlogsOfKind(Integer kind, Integer startPage);
-    public Map<String, List<BlogDTO>> getIndexBlogs();
+    public Map<String, Object> getIndexInfo();
     public int getNumsOfKind(Integer kind);
     public boolean privateBlog(Integer bid);
     public boolean update(Blog blog);

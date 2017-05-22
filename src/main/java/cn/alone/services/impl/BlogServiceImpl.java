@@ -7,6 +7,7 @@ import cn.alone.pojo.Blog;
 import cn.alone.pojo.dto.BlogDTO;
 import cn.alone.services.IBlogService;
 import cn.alone.utils.PageUtil;
+import org.javatuples.Pair;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -66,9 +67,20 @@ public class BlogServiceImpl implements IBlogService {
      * @return
      */
     @Transactional
-    public List<Blog> getByPage(Integer startPage) {
+    public Pair<PageUtil, List<BlogDTO>> getByPage(Integer startPage) {
         PageUtil page = new PageUtil(blogMapper.getBlogNums(), startPage);
-        return blogMapper.selectOnePage(page.getStartPos(), page.getSize());
+        List<Blog> blogs = blogMapper.selectOnePage(page.getStartPos(), page.getSize());
+        List<BlogDTO> blogDTOS = new ArrayList<BlogDTO>();
+        for (Blog blog : blogs) {
+            BlogDTO dto = new BlogDTO();
+            dto.setBlog(blog);
+            dto.setUsername(userMapper.selectById(blog.getUid()).getNickname());
+            if (blog.getKind() != null) {
+                dto.setKind(kindMapper.selectById(blog.getKind()).getName());
+            }
+            blogDTOS.add(dto);
+        }
+        return new Pair<PageUtil, List<BlogDTO>>(page, blogDTOS);
     }
 
     /**
@@ -84,8 +96,8 @@ public class BlogServiceImpl implements IBlogService {
     }
 
     @Transactional
-    public Map<String, List<BlogDTO>> getIndexBlogs() {
-        Map<String, List<BlogDTO>> res = new HashMap<String, List<BlogDTO>>();
+    public Map<String, Object> getIndexInfo() {
+        Map<String, Object> res = new HashMap<String, Object>();
         // 获取热门文章
         List<Blog> hotBlogs = blogMapper.selectByClicked();
         List<BlogDTO> hotBlogDTO = new ArrayList<BlogDTO>();
@@ -100,18 +112,9 @@ public class BlogServiceImpl implements IBlogService {
         }
         res.put("hotBlogs", hotBlogDTO);
         // 获取文章第一页
-        List<Blog> firstPage = this.getByPage(1);
-        List<BlogDTO> firstPageDto = new ArrayList<BlogDTO>();
-        for (Blog blog : firstPage) {
-            BlogDTO dto = new BlogDTO();
-            dto.setBlog(blog);
-            dto.setUsername(userMapper.selectById(blog.getUid()).getNickname());
-            if (blog.getKind() != null) {
-                dto.setKind(kindMapper.selectById(blog.getKind()).getName());
-            }
-            firstPageDto.add(dto);
-        }
-        res.put("firstPage", firstPageDto);
+        Pair<PageUtil, List<BlogDTO>> pageBlogPair = this.getByPage(1);
+        res.put("firstPage", pageBlogPair.getValue1());
+        res.put("page", pageBlogPair.getValue0());
         return res;
     }
 

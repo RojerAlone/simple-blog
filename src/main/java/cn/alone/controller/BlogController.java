@@ -4,11 +4,15 @@ import cn.alone.pojo.Blog;
 import cn.alone.pojo.User;
 import cn.alone.pojo.dto.BlogDTO;
 import cn.alone.services.IBlogService;
+import cn.alone.utils.PageUtil;
+import org.javatuples.Pair;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import java.util.List;
 
 /**
  * Created by RojerAlone on 2017/4/9.
@@ -49,13 +53,16 @@ public class BlogController  extends AbstractController{
         return "redirect:" + this.getRequest().getHeader("Referer");
     }
 
-    @RequestMapping(value = "all", method = RequestMethod.GET)
-    public String getAll(Integer pageIndex) {
+    @RequestMapping(value = "all/{pageIndex}", method = RequestMethod.GET)
+    public String getAll(@PathVariable Integer pageIndex) {
+        Pair<PageUtil, List<BlogDTO>> pageBlogPair;
         if (pageIndex == null) {
-            this.getModel().addAttribute("blogs", blogService.getByPage(1));
+            pageBlogPair = blogService.getByPage(1);
         } else {
-            this.getModel().addAttribute("blogs", blogService.getByPage(pageIndex));
+            pageBlogPair = blogService.getByPage(1);
         }
+        this.getModel().addAttribute("page", pageBlogPair.getValue0());
+        this.getModel().addAttribute("blogs", pageBlogPair.getValue1());
         return "bloglist";
     }
 
