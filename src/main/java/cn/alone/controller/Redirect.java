@@ -4,6 +4,7 @@ import cn.alone.pojo.dto.BlogDTO;
 import cn.alone.services.IBlogService;
 import cn.alone.services.IKindService;
 import cn.alone.utils.PageUtil;
+import org.javatuples.Pair;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,11 +25,11 @@ public class Redirect extends AbstractController{
 
     @RequestMapping(value = "/index")
     public String index() {
-        Map<String, Object> indexInfo = blogService.getIndexInfo();
-        this.getModel().addAttribute("hotBlogs", (List<BlogDTO>) indexInfo.get("hotBlogs"));   // 热门文章前五名
-        this.getModel().addAttribute("firstPage", (List<BlogDTO>) indexInfo.get("firstPage")); // 第一页的文章
-        this.getModel().addAttribute("page", (PageUtil) indexInfo.get("page"));
-        this.getModel().addAttribute("kinds", kindService.getAllKind());        // 文章类别
+        Pair<PageUtil, List<BlogDTO>> pageBlog = blogService.getByPage(1);
+        this.getModel().addAttribute("firstPage", pageBlog.getValue1());        // 第一页的文章
+        this.getModel().addAttribute("page", pageBlog.getValue0());
+        this.getModel().addAttribute("hotBlogs", blogService.getHotBlogs());   // 热门文章前五名
+        this.getModel().addAttribute("kinds", kindService.getAllKind());       // 文章类别
         return "index";
     }
 

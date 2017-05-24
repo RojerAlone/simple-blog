@@ -18,7 +18,8 @@ public interface IBlogService {
     public BlogDTO selectById(Integer bid);
     public Pair<PageUtil, List<BlogDTO>> getByPage(Integer startPage);
     public List<Blog> getBlogsOfKind(Integer kind, Integer startPage);
-    public Map<String, Object> getIndexInfo();
+//    public Map<String, Object> getIndexInfo();
+    public List<BlogDTO> getHotBlogs();
     public int getNumsOfKind(Integer kind);
     public boolean privateBlog(Integer bid);
     public boolean update(Blog blog);

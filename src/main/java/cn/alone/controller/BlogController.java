@@ -4,6 +4,7 @@ import cn.alone.pojo.Blog;
 import cn.alone.pojo.User;
 import cn.alone.pojo.dto.BlogDTO;
 import cn.alone.services.IBlogService;
+import cn.alone.services.IKindService;
 import cn.alone.utils.PageUtil;
 import org.javatuples.Pair;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,8 @@ public class BlogController  extends AbstractController{
 
     @Autowired
     private IBlogService blogService;
+    @Autowired
+    private IKindService kindService;
 
     @RequestMapping(value = "write", method = RequestMethod.GET)
     public String write() {
@@ -59,10 +62,11 @@ public class BlogController  extends AbstractController{
         if (pageIndex == null) {
             pageBlogPair = blogService.getByPage(1);
         } else {
-            pageBlogPair = blogService.getByPage(1);
+            pageBlogPair = blogService.getByPage(pageIndex);
         }
         this.getModel().addAttribute("page", pageBlogPair.getValue0());
         this.getModel().addAttribute("blogs", pageBlogPair.getValue1());
+        getLeftPanelInfo();
         return "bloglist";
     }
 
@@ -73,6 +77,7 @@ public class BlogController  extends AbstractController{
             return "ErrorCode/ErrorCode404";
         }
         this.getModel().addAttribute("blog", blog);
+        getLeftPanelInfo();
         return "blog";
     }
 
@@ -101,5 +106,10 @@ public class BlogController  extends AbstractController{
 //    public List<Blog> getHotBlogs() {
 //        return blogService.get();
 //    }
+
+    private void getLeftPanelInfo() {
+        this.getModel().addAttribute("hotBlogs", blogService.getHotBlogs());   // 热门文章前五名
+        this.getModel().addAttribute("kinds", kindService.getAllKind());       // 文章类别
+    }
 
 }

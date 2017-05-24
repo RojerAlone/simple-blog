@@ -70,9 +70,12 @@
                     </div>
                 </c:forEach>
             </div>
+            <row>
             <nav aria-label="Page navigation">
-                <ul class="pagination">
-                    <li>共 ${page.pages} 页，当前第 ${page.current} 页</li>
+                <ul class="pager">
+                    <%--<div style="margin-left: 0px;">--%>
+                        <%--共 ${page.pages} 页，当前第 ${page.current} 页--%>
+                    <%--</div>--%>
                     <li><a href="/blog/all/1">首页</a></li>
                     <li>
                         <c:choose>
@@ -88,20 +91,21 @@
                             </c:otherwise>
                         </c:choose>
                     </li>
-                    <c:forEach var="p" begin="${page.current}"
-                               end="${page.current + 4 < page.pages ? page.current + 4 : page.pages}">
-                        <li><a href="/blog/all/${p}">${p}</a></li>
-                    </c:forEach>
-                    <%--<li><a href="/blog/all/1">1</a></li>--%>
-                    <%--<li><a href="#">2</a></li>--%>
-                    <%--<li><a href="#">3</a></li>--%>
-                    <%--<li><a href="#">4</a></li>--%>
-                    <%--<li><a href="#">5</a></li>--%>
-                    <%--<li>--%>
-                        <%--<a href="#" aria-label="Next">--%>
-                            <%--<span aria-hidden="true">&raquo;</span>--%>
-                        <%--</a>--%>
-                    <%--</li>--%>
+                    <c:choose>
+                        <%--如果当前页数是3页以后，就要--%>
+                        <c:when test="${page.current > 3}">
+                            <c:forEach var="p" begin="${page.current - 2}"
+                                       end="${page.current + 2 < page.pages ? page.current + 2 : page.pages}">
+                                <li><a href="/blog/all/${p}">${p}</a></li>
+                            </c:forEach>
+                        </c:when>
+                        <%--如果当前页数是前3页，直接显示前5页--%>
+                        <c:otherwise>
+                            <c:forEach var="p" begin="1" end="${page.pages < 5 ? page.pages : 5}">
+                                <li><a href="/blog/all/${p}">${p}</a></li>
+                            </c:forEach>
+                        </c:otherwise>
+                    </c:choose>
                     <li>
                         <c:choose>
                             <c:when test="${page.current < page.pages}">
@@ -119,6 +123,7 @@
                     <li><a href="/blog/all/${page.pages}">尾页</a></li>
                 </ul>
             </nav>
+            </row>
         </div>
         <div class="col-lg-2"></div>
     </div>

@@ -4,7 +4,7 @@
   Time: 17:22
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
-<%--滚动播放--%>
+<%--图片滚动播放--%>
 <div class="container-fluid">
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
         <!-- Indicators -->

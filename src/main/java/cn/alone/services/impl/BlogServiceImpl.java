@@ -95,10 +95,7 @@ public class BlogServiceImpl implements IBlogService {
         return blogMapper.selectBlogsByKind(kind, page.getStartPos(), page.getSize());
     }
 
-    @Transactional
-    public Map<String, Object> getIndexInfo() {
-        Map<String, Object> res = new HashMap<String, Object>();
-        // 获取热门文章
+    public List<BlogDTO> getHotBlogs() {
         List<Blog> hotBlogs = blogMapper.selectByClicked();
         List<BlogDTO> hotBlogDTO = new ArrayList<BlogDTO>();
         for (Blog blog : hotBlogs) {
@@ -110,13 +107,31 @@ public class BlogServiceImpl implements IBlogService {
             }
             hotBlogDTO.add(dto);
         }
-        res.put("hotBlogs", hotBlogDTO);
-        // 获取文章第一页
-        Pair<PageUtil, List<BlogDTO>> pageBlogPair = this.getByPage(1);
-        res.put("firstPage", pageBlogPair.getValue1());
-        res.put("page", pageBlogPair.getValue0());
-        return res;
+        return hotBlogDTO;
     }
+
+//    @Transactional
+//    public Map<String, Object> getIndexInfo() {
+//        Map<String, Object> res = new HashMap<String, Object>();
+//        // 获取热门文章
+//        List<Blog> hotBlogs = blogMapper.selectByClicked();
+//        List<BlogDTO> hotBlogDTO = new ArrayList<BlogDTO>();
+//        for (Blog blog : hotBlogs) {
+//            BlogDTO dto = new BlogDTO();
+//            dto.setBlog(blog);
+//            dto.setUsername(userMapper.selectById(blog.getUid()).getNickname());
+//            if (blog.getKind() != null) {
+//                dto.setKind(kindMapper.selectById(blog.getKind()).getName());
+//            }
+//            hotBlogDTO.add(dto);
+//        }
+//        res.put("hotBlogs", hotBlogDTO);
+//        // 获取文章第一页
+//        Pair<PageUtil, List<BlogDTO>> pageBlogPair = this.getByPage(1);
+//        res.put("firstPage", pageBlogPair.getValue1());
+//        res.put("page", pageBlogPair.getValue0());
+//        return res;
+//    }
 
     /**
      * 获取某类文章的个数

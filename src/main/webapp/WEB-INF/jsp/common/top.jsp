@@ -24,7 +24,7 @@
                 </div>
                 <ul class="nav navbar-nav navbar-center">
                     <li><a href="/index">首页</a></li>
-                    <li><a href="/blog/all">文章</a></li>
+                    <li><a href="/blog/all/1">文章</a></li>
                     <li><a href="/kind/all">类别</a></li>
                     <li><a href="/about">关于我</a></li>
                     <c:choose>
