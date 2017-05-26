@@ -6,6 +6,7 @@
 
 # IDEA file
 .idea/
+.iml
 target/
 upload/
 
